@@ -1,0 +1,81 @@
+﻿@model Practica1.Models.Estudiante
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="text-center">Informacion sobre el Estudiante</h2>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                Aquí puedes visualizar información sobre el estudiante, incluyendo nombre, apellidos, asignaturas cursadas y hobbies.
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Columna 1</th>
+                        <th>Columna 2</th>
+                        <th>Columna 3</th>
+                        <th>Columna 4</th>
+                        <th>Columna 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nombre</td>
+                        <td colspan="4">@Model.Nombre</td>
+                    </tr>
+
+                    <tr>
+                        <td>Apellido(s)</td>
+                        @foreach (var apellido in Model.Apellido.Split(' '))
+                        {
+                            <td>@apellido</td>
+                        }
+                        @for (var i = Model.Apellido.Split(' ').Length; i < 4; i++)
+                        {
+                            <td></td>
+                        }
+                    </tr>
+
+                    <tr>
+                        <td>Códigos de Asignaturas cursadas</td>
+                        @foreach (var codigo in Model.CodigosAsignaturas)
+                        {
+                            <td>@codigo</td>
+                        }
+                        @for (var i = Model.CodigosAsignaturas.Count; i < 4; i++)
+                        {
+                            <td></td>
+                        }
+                    </tr>
+
+                    <tr>
+                        <td>Hobbies/Pasatiempos</td>
+                        @foreach (var hobby in Model.Hobbies)
+                        {
+                            <td>@hobby</td>
+                        }
+                        @for (var i = Model.Hobbies.Count; i < 4; i++)
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary">Acción Adicional bootstrap</button>
+        </div>
+    </div>
+</div>
